@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "gatsby": "^2.17.0",
+    "gatsby-source-filesystem": "^2.1.33",
     "gatsby-theme-docs": "*",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "requiredir": "^1.0.7"
   }
 }
