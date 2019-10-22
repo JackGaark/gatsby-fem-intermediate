@@ -10,8 +10,21 @@ exports.onPreBootstrap = ({ store }, options) => {
   //todo get options with defaults
   //todo figure out the content path
   //todo if directory create it
-}
 
 if (!fs.existsSync(dir)) {
   mkdirp.sync(dir);
+}
+};
+
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+  type DocsPage implements Node {
+    id: ID!
+    title: String!
+    path: String!
+    updated: Date! @dateformat
+    body: String!
+
+  }
+  `)
 }
