@@ -1,40 +1,36 @@
-const withDefaults = require('./utils/default-options');
 const path = require('path');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
+const withDefaults = require('./utils/default-options');
 
 exports.onPreBootstrap = ({ store }, options) => {
-  const {program } = store.getState();
+  const { program } = store.getState();
   const { contentPath } = withDefaults(options);
   const dir = path.join(program.directory, contentPath);
-  //todo get options with defaults
-  //todo figure out the content path
-  //todo if directory create it
 
-if (!fs.existsSync(dir)) {
-  mkdirp.sync(dir);
-}
+  if (!fs.existsSync(dir)) {
+    mkdirp.sync(dir);
+  }
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
   actions.createTypes(`
-  type DocsPage implements Node {
-    id: ID!
-    title: String!
-    path: String!
-    updated: Date! @dateformat
-    body: String!
-
+    type DocsPage implements Node @dontInfer {
+      id: ID!
+      title: String!
+      path: String!
+      updated: Date! @dateformat
+      body: String!
     }
   `);
 };
 
-exports.onCreateNode = ({node, actions, getNode, createNodeId }, options) => {
+exports.onCreateNode = ({ node, actions, getNode, createNodeId }, options) => {
   const { basePath } = withDefaults(options);
   const parent = getNode(node.parent);
 
-  //only work on MDX files that were loaded by this theme
-  if(
+  // Only work on MDX files that were loaded by this theme
+  if (
     node.internal.type !== 'Mdx' ||
     parent.sourceInstanceName !== 'gatsby-theme-docs'
   ) {
@@ -53,25 +49,25 @@ exports.onCreateNode = ({node, actions, getNode, createNodeId }, options) => {
     internal: {
       type: 'DocsPage',
       contentDigest: node.internal.contentDigest,
-    }
+    },
   });
 };
 
-exports.createResolvers = ({ createResolvers}) => {
+exports.createResolvers = ({ createResolvers }) => {
   createResolvers({
     DocsPage: {
       body: {
         type: 'String!',
         resolve: (source, args, context, info) => {
-        //Load the resolver for the `Mdx` type `body` field.
-        const type = info.schema.getType('Mdx');
-        const mdxFields = type.getFields();
-        const resolver = mdxFields.body.resolve;
+          // Load the resolver for the `Mdx`type `body` field.
+          const type = info.schema.getType('Mdx');
+          const mdxFields = type.getFields();
+          const resolver = mdxFields.body.resolve;
 
-        const mdxNode = context.nodeModel.getNodeById({ id: source.parent });
+          const mdxNode = context.nodeModel.getNodeById({ id: source.parent });
 
-        return resolver(mdxNode, args, context, {
-          fieldName: 'body',
+          return resolver(mdxNode, args, context, {
+            fieldName: 'body',
           });
         },
       },
@@ -79,7 +75,7 @@ exports.createResolvers = ({ createResolvers}) => {
   });
 };
 
-exports.createPages = async ({actions, graphql, reporter }) => {
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     query {
       allDocsPage {
@@ -92,7 +88,7 @@ exports.createPages = async ({actions, graphql, reporter }) => {
   `);
 
   if (result.errors) {
-    resporter.panic('error loading docs', result.errors);
+    reporter.panic('error loading docs', result.errors);
   }
 
   const pages = result.data.allDocsPage.nodes;
