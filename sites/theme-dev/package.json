@@ -8,6 +8,7 @@
     "develop": "gatsby develop"
   },
   "dependencies": {
+    "@mdx-js/react": "^1.5.1",
     "gatsby": "^2.17.0",
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-theme-docs": "*",
