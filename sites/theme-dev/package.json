@@ -1,16 +1,29 @@
 {
   "name": "theme-dev",
+<<<<<<< HEAD
   "version": "1.0.0",
   "main": "index.js",
+=======
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Jason Lengstorf <jason@lengstorf.com> (https://lengstorf.com)",
+>>>>>>> ae614b9f5fd39d703cd27c09f613b7d833429722
   "license": "MIT",
   "private": true,
   "scripts": {
     "develop": "gatsby develop"
   },
   "dependencies": {
+<<<<<<< HEAD
     "gatsby": "^2.17.7",
     "gatsby-theme-docs": "*",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
+=======
+    "gatsby": "^2.17.0",
+    "gatsby-theme-docs": "*",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+>>>>>>> ae614b9f5fd39d703cd27c09f613b7d833429722
   }
 }

@@ -37,7 +37,11 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId }, options) => {
     return;
   }
 
+<<<<<<< HEAD
   // Treat `index.mdx` link `index.html` (i.e. `docs/` vs. `docs/index/`).
+=======
+  //Treat `index.mdx` link `index.html` (i.e. `docs/` vs. `docs/index/`);
+>>>>>>> ae614b9f5fd39d703cd27c09f613b7d833429722
   const pageName = parent.name !== 'index' ? parent.name : '';
 
   actions.createNode({

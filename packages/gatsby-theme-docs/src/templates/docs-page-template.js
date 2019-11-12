@@ -13,5 +13,8 @@ export const query = graphql`
 `;
 
 const DocsPageTemplate = ({ data }) => <DocsPage page={data.docsPage} />;
+<<<<<<< HEAD
 
+=======
+>>>>>>> ae614b9f5fd39d703cd27c09f613b7d833429722
 export default DocsPageTemplate;

@@ -7,13 +7,23 @@
     "@emotion/core": "^10.0.22",
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
+<<<<<<< HEAD
     "gatsby-plugin-mdx": "^1.0.55",
     "gatsby-plugin-theme-ui": "^0.2.43",
     "gatsby-source-filesystem": "^2.1.35",
+=======
+    "gatsby-plugin-mdx": "^1.0.52",
+    "gatsby-plugin-theme-ui": "^0.2.43",
+    "gatsby-source-filesystem": "^2.1.33",
+>>>>>>> ae614b9f5fd39d703cd27c09f613b7d833429722
     "mdx-utils": "^0.2.0",
     "mkdirp": "^0.5.1",
     "prism-react-renderer": "^1.0.2",
     "react-live": "^2.2.1",
+<<<<<<< HEAD
     "theme-ui": "^0.2.46"
+=======
+    "theme-ui": "^0.2.44"
+>>>>>>> ae614b9f5fd39d703cd27c09f613b7d833429722
   }
 }
