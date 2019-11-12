@@ -50,4 +50,4 @@ const History = ({ data }) => (
   </Layout>
 );
 
-export default History;
+export default History; 
