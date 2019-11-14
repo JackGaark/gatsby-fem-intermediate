@@ -22,6 +22,8 @@ const Results = ({ name }) => {
   const { loading, error, data } = useQuery(SEARCH_QUERY, {
     variables: { name },
   });
+  console.log(SEARCH_QUERY)
+  console.log(data)
 
   const hasResults = data && (data.characters.results || []).length > 0;
 
